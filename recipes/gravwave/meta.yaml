@@ -1,0 +1,38 @@
+{% set name = "gravwave" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "d4c4fcda79c560163bc668544dfc31a0e8ac01c9f56b24b276371708ac917f1e"
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - gravwave
+
+about:
+  home: "https://github.com/JWKennington/gravwave"
+  license: "MIT"
+  license_family: "MIT"
+  license_file: "LICENSE.txt"
+  summary: "Gravitational Wave Python Tools"
+  doc_url: ""
+  dev_url: ""
+
+extra:
+  recipe-maintainers:
+    - JWKennington
